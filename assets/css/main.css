@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap");
+
+ :root {
+  --dark: #222222 ;
+  --primary: #2c3034;
+  --pinky: #f67e7d;
+  --accent: #ffb997;
+  --white: #fff;
+  --half-white: rgba(255, 255, 255, 0.5);
+  --background-primary: #282828;
+   --link-color: rgba(253,254,238,0.8);
+
+   --light-green: #394343;
+
+  --transition: all 0.2s ease;
+  --nav-width: 20em;
+  --header-height: 14em;
+
+   --montserrat: 'Montserrat', sans-serif;
+   --poppins: 'Poppins', sans-serif
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: 'Montserrat', 'Helvetica',sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  color: var(--white);
+  font-size: 5rem;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  color: var(--white);
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 36px;
+}
+
+h4 {
+  font-size: 2.2rem;
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0.215em;
+}
+
+h4 {
+
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: var(--white);
+}
+
+p {
+  color: var(--half-white);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+#app {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.full-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--primary);
+  width: calc(100% - var(--nav-width));
+  margin-left: var(--nav-width);
+}
+
