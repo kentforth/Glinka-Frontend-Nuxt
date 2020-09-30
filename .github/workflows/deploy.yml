@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Build folder for production on local machine
-        working-directory: /
+        working-directory: D:\VUE Projects\Glinka\glinka-frontend
         run: npm run build
 
 
