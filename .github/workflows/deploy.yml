@@ -3,7 +3,7 @@ name: Deploy to VPS
 on: push
 
 jobs:
-  buildOnLocal:
+  build:
     runs-on: windows-latest
     strategy:
       matrix:
@@ -12,12 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
       - name: Build folder for production on local machine
         working-directory: ./glinka-frontend
         run: npm run build
+
+
 
 
 
