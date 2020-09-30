@@ -18,6 +18,6 @@ jobs:
       - name: Build folder for production on local machine
         run: |
           npm run build
-          working-directory: D:/Vue Projects/Glinka/glinka-frontend
+          working-directory: ./
 
 
