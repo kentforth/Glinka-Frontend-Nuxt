@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Build folder for production on local machine
-        run: |
-          npm run build
-          working-directory: ./
+        working-directory: /
+        run: npm run build
+
 
 
