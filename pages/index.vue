@@ -7,20 +7,17 @@
       <!--BIO-->
       <div class="bio">
         <div class="bio-title">
-          <h2>GLinka</h2>
-          <h2>ANASTASIYA</h2>
-          <h3>Hello,</h3>
-          <h2>I'm GLINKA</h2>
+          <h2>{{mainTitle4}}</h2>
+          <h2>{{mainTitle3}}</h2>
+          <h3>{{mainTitle2}}</h3>
+          <h2>{{mainTitle}}</h2>
         </div>
 
         <!--TEXT-->
         <div class="bio-text">
           <div class="container">
             <p>
-              Simple text about Glinka’s life. This example was made by Tema.
-              He’s backend developer, playing guitar and love parrots. Simple
-              text about Glinka’s life. This example was made by Tema. He’s
-              backend developer, playing guitar and love parrots.
+             {{mainText}}
             </p>
           </div>
         </div>
@@ -83,8 +80,12 @@
 </template>
 
 <script>
+import { mainTextRU } from '../language/russian/home'
+import { mainTextENG} from '../language/english/home'
+
 import ButtonPrimary from '../components/Button-Primary'
 import Rights from '../components/Rights'
+
 export default {
   name: 'Home',
   components: { Rights, ButtonPrimary },
@@ -98,6 +99,12 @@ export default {
     contactMeLink: '/contact',
     worksText: 'See more',
     worksLink: '/portfolio',
+    languageENG: true,
+    mainText: mainTextENG,
+    mainTitle: "I'm GLINKA",
+    mainTitle2: 'Hello,',
+    mainTitle3: 'ANASTASIYA',
+    mainTitle4: 'GLINKA',
     images: [
       require('../assets/images/test/image  1.jpg'),
       require('../assets/images/test/image 2.jpg'),
@@ -106,6 +113,30 @@ export default {
       require('../assets/images/test/image 5.jpg'),
     ],
   }),
+  methods: {
+    changeLanguage(language) {
+
+    }
+  },
+  mounted() {
+    $nuxt.$on('changeLanguage', changeLanguage => {
+      if (changeLanguage === true) {
+        this.mainText = mainTextENG;
+        this.mainTitle = "I'm GLINKA"
+        this.mainTitle2 = "Hello,"
+        this.mainTitle3 = "ANASTASIYA"
+        this.mainTitle4 = "GLINKA"
+      } else {
+        this.mainText = mainTextRU
+        this.mainTitle = "Я ГЛИНКА"
+        this.mainTitle2 = "Привет,"
+        this.mainTitle3 = "АНАСТАСИЯ"
+        this.mainTitle4 = "ГЛИНКА"
+      }
+
+    })
+
+  }
 }
 </script>
 
@@ -119,7 +150,6 @@ export default {
   margin-left: var(--nav-width);
   width: calc(100% - var(--nav-width));
   overflow-y: scroll;
-
 }
 
 h4 {
@@ -279,11 +309,12 @@ h4:last-child {
 
 .follow-instagram {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   justify-items: center;
   margin: 3em auto 4em auto;
+  padding: 0 5%;
 }
 
 .insta-item {
@@ -296,5 +327,82 @@ h4:last-child {
   object-position: center;
   width: 100%;
   height: 100%;
+}
+
+/*MEDIA QUERIES*/
+@media screen and (max-width: 1440px) and (max-height: 900px) {
+  .bio-title h2:nth-child(2) {
+    left: -12%;
+  }
+
+  .calligraffity {
+    top: 5%;
+  }
+
+  .works__images img:nth-child(2),
+  .works__images img:nth-child(3),
+  .works__images img:nth-child(4) {
+    width: 250px;
+    height: 180px;
+  }
+
+  .works__images img:nth-child(2) {
+    top: 20%;
+    left: 8%;
+  }
+
+  .works__images img:nth-child(3) {
+    top: 37%;
+    left: 45%;
+  }
+  .works__images img:nth-child(4) {
+    top: 60%;
+    left: 25%;
+  }
+
+  h4:nth-child(4) {
+    margin-top: 0;
+  }
+
+  .follow-instagram {
+    padding: 0 2em;
+  }
+}
+
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+  .bio-title h2:nth-child(2) {
+    left: -13%;
+  }
+
+  .bio-title h2:nth-child(1) {
+    left: -5%;
+  }
+
+  .btn-contact {
+    margin-top: 4em;
+  }
+
+  .calligraffity {
+    top: -5%;
+    left: 77%;
+  }
+
+  h4:nth-child(4) {
+    margin-top: 3em;
+  }
+}
+
+@media screen and (max-width: 1200px) and (max-height: 720px) {
+  h2 {
+    font-size: 4rem;
+  }
+
+  .bio-title h2:nth-child(2) {
+    left: 11%;
+  }
+
+  .bio-text p {
+    font-size: 1.5rem;
+  }
 }
 </style>

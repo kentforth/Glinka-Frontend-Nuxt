@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation">
+  <div class="navigation" :class="navClass">
     <NuxtLink to="/" class="nav-image">
       <img src="../assets/images/avatar.webp" alt="" />
     </NuxtLink>
@@ -47,6 +47,18 @@
         EN
       </button>
     </div>
+
+    <client-only>
+      <burger-button
+        :bar-height="3"
+        :bar-width="37"
+        :active="isNavOpen"
+        @click="openNav"
+        class="btn-nav"
+        :class="hamburgerClass"
+      />
+    </client-only>
+
   </div>
 </template>
 
@@ -65,32 +77,38 @@ export default {
 
       if (this.isNavOpen) {
         this.navClass = 'nav-content-open'
-        this.hamburgerClass = 'nav-hamburger-open'
+        // this.hamburgerClass = 'nav-hamburger-open'
       }
       if (!this.isNavOpen) {
         this.navClass = 'nav-content-closed'
-        this.hamburgerClass = 'nav-hamburger-closed'
+        // this.hamburgerClass = 'nav-hamburger-closed'
       }
       $nuxt.$emit('navOpen', this.isNavOpen)
     },
     handleResize() {
-      // this.isNavOpen = window.innerWidth > 900;
+      this.isNavOpen = window.innerWidth > 900
     },
     changeLanguageToRU() {
-      this.languageENG = false
+      this.languageENG = false;
+      $nuxt.$emit('changeLanguage', this.languageENG)
     },
     changeLanguageToENG() {
-      this.languageENG = true
+      this.languageENG = true;
+      $nuxt.$emit('changeLanguage', this.languageENG)
     },
   },
   mounted() {},
 
   created() {
-    // window.addEventListener("resize", this.handleResize);
-    this.handleResize()
+    if (process.client) {
+      window.addEventListener('resize', this.handleResize)
+      this.handleResize()
+    }
   },
   destroyed() {
-    // window.removeEventListener("resize", this.handleResize);
+    if (process.client) {
+      window.removeEventListener('resize', this.handleResize)
+    }
   },
 }
 </script>
@@ -114,7 +132,6 @@ export default {
 .nav-image {
   padding-top: 1.5em;
   width: 60%;
-
 }
 
 .navigation img {
@@ -122,7 +139,6 @@ export default {
   object-position: center;
   width: 100%;
   border-radius: 50%;
-
 }
 
 .navigation h2 {
@@ -211,6 +227,40 @@ export default {
   transition: var(--transition);
 }
 
+.btn-nav {
+  position: absolute;
+  display: none;
+  transform: translateX(4em);
+  top: 2em;
+  right: 0;
+}
+
+.burguer-button > .bar:nth-child(2) {
+  transform: translateY(3px);
+}
+
+.burguer-button > .bar:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.burguer-button.-active > .bar:nth-child(3) {
+  transform: translateY(0) rotate(-40deg);
+}
+
+.burguer-button.-active > .bar:nth-child(1) {
+  transform: translateY(200%) rotate(40deg);
+}
+
+.nav-content-open {
+  animation: navOpen 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+.nav-content-closed {
+  animation: navClosed 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
 .nuxt-link-exact-active {
   color: var(--white) !important;
 }
@@ -230,6 +280,68 @@ export default {
   100% {
     left: 11%;
     width: 80%;
+  }
+}
+
+/*Animation for navigation*/
+@keyframes navOpen {
+  0% {
+    transform: translateX(calc(-1 * var(--nav-width)));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes navClosed {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-1 * var(--nav-width)));
+  }
+}
+
+/*MEDIA QUERIES*/
+
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+  .nav-image {
+    width: 50%;
+  }
+  .navigation h2 {
+    font-size: 1.7rem;
+    width: 80%;
+  }
+
+  .nav-links a {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 1200px) and (max-height: 720px) {
+  .instagram {
+    font-size: 2.5rem;
+  }
+
+  .btn-lang {
+    font-size: 1.4rem;
+  }
+
+  .devider {
+    height: 30px;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  .navigation {
+    transform: translateX(calc(-1 * var(--nav-width)));
+  }
+
+  .btn-nav {
+    display: block;
   }
 }
 </style>

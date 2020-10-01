@@ -1,0 +1,64 @@
+/*Calligraffiti*/
+@font-face {
+  font-family: "Calligraffitti";
+  src: local("Calligraffiti");
+  src: url('../fonts/Calligraffiti/Calligraffiti.woff') format("woff");
+  font-weight: 400;
+}
+
+/*MONTSERRAT*/
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-Thin.woff') format("woff");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-Light.woff') format("woff");
+  font-weight: 300 ;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-Regular.woff') format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-Medium.woff') format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-SemiBold.woff') format("woff");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-Bold.woff') format("woff");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-ExtraBold.woff') format("woff");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat");
+  src: url('../fonts/Montserrat/Montserrat-Black.woff') format("woff");
+  font-weight: 900;
+}
