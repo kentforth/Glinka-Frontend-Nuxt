@@ -11,9 +11,10 @@ jobs:
     name: Deploy
     runs-on: windows-latest
     steps:
-      - name: Build Project
+      - name: Setup Project
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node_version }}
       - name: Build
+        working-directory: ./glinka-frontend
         run: npm run build
