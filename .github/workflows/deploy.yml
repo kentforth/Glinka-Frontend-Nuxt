@@ -11,13 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@master
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Build folder for production on local machine
-        working-directory: ./glinka-frontend
+      - name: Build Project
         run: npm run build
+
 
 
 
