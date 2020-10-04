@@ -1,20 +1,16 @@
-name: Deployment Setup
-
+name: 'test my project'
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  pull-request:
 jobs:
-  job-one:
-    name: Deploy
+  test-job:
     runs-on: windows-latest
     steps:
-      - name: Setup Project
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        name: 'setup node'
         with:
-          node-version: ${{ matrix.node_version }}
-      - name: Build
-        working-directory: ./glinka-frontend
+          node-version: '12.x'
+
+      - name: 'build'
         run: npm run build
