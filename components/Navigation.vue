@@ -127,6 +127,7 @@ export default {
   grid-template-rows: auto auto 1fr 0.1fr 0.2fr;
   justify-content: center;
   justify-items: center;
+  z-index: 999;
 }
 
 .nav-image {
@@ -305,6 +306,32 @@ export default {
 }
 
 /*MEDIA QUERIES*/
+@media (-webkit-min-device-pixel-ratio: 1.25) {
+  .nav-image {
+    width: 50%;
+  }
+  .navigation h2 {
+    font-size: 1.7rem;
+    width: 80%;
+  }
+
+  .nav-links a {
+    font-size: 1.4rem;
+  }
+
+  .instagram {
+    font-size: 2.5rem;
+  }
+
+  .btn-lang {
+    font-size: 1.3rem;
+  }
+
+  .devider {
+    height: 30px;
+  }
+}
+
 
 @media screen and (max-width: 1366px) and (max-height: 768px) {
   .nav-image {
@@ -318,6 +345,9 @@ export default {
   .nav-links a {
     font-size: 1.6rem;
   }
+
+
+
 }
 
 @media screen and (max-width: 1200px) and (max-height: 720px) {

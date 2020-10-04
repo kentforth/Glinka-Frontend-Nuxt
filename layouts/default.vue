@@ -13,7 +13,5 @@
   }
 </script>
 <style scoped>
-.main-layout {
-  background-color: var(--primary);
-}
+
 </style>
