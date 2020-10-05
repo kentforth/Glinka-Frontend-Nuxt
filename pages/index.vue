@@ -75,22 +75,22 @@
 
     <h4>FOLLOW MY INSTAGRAMM</h4>
 
-    <div
-      class="follow-instagram"
-      data-aos="fade-up"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-    >
-      <a
-        class="insta-item"
-        v-for="image in images"
-        :key="image"
-        href="https://www.instagram.com/aee.glinka/?igshid=1we4ciix7d3wm"
-        target="_blank"
-      >
-        <img :src="image" alt="insta-image" />
-      </a>
-    </div>
+        <div
+          class="follow-instagram"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+        >
+          <a
+            class="insta-item"
+            v-for="image in images.data"
+            :key="image"
+            href="https://www.instagram.com/aee.glinka/?igshid=1we4ciix7d3wm"
+            target="_blank"
+          >
+            <img :src="image" alt="insta-image" />
+          </a>
+        </div>
 
     <Rights />
   </div>
@@ -124,18 +124,26 @@ export default {
     mainTitle4: 'GLINKA',
     navOpen: false,
     navDefault: true,
-    images: [
-      require('../assets/images/test/image  1.jpg'),
-      require('../assets/images/test/image 2.jpg'),
-      require('../assets/images/test/image 3.jpg'),
-      require('../assets/images/test/image 4.jpg'),
-      require('../assets/images/test/image 5.jpg'),
-    ],
+    images: ['one', 'two'],
   }),
   methods: {
     changeLanguage(language) {},
+    feedImages() {
+      this.$axios
+        .get('http://localhost:6080')
+        .then((response) => {
+          this.images = response
+          console.log(this.images)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
   },
+
   mounted() {
+    this.feedImages()
+
     $nuxt.$on('changeLanguage', (changeLanguage) => {
       if (changeLanguage === true) {
         this.mainText = mainTextENG
@@ -257,7 +265,7 @@ h4:last-child {
 
 .works {
   background-color: var(--primary);
-  grid-template-rows:1fr;
+  grid-template-rows: 1fr;
   margin-bottom: 15em;
   height: 80%;
   width: 100%;
@@ -312,6 +320,7 @@ h4:last-child {
 .works__images img:nth-child(4) {
   width: 300px;
   height: 220px;
+  box-shadow: 0 22px 44px -12px rgba(0, 0, 0, 0.35);
 }
 
 .works__text {
@@ -398,8 +407,6 @@ h4:last-child {
 
 /*MEDIA QUERIES*/
 @media (-webkit-min-device-pixel-ratio: 1.25) {
-
-
   h2 {
     font-size: 4rem;
   }
@@ -658,46 +665,195 @@ h4:last-child {
     font-size: 1.6rem;
   }
 
+  h4 {
+    font-size: 1.8rem;
+  }
+
   .works {
-    grid-template-rows: 1fr;
     grid-template-columns: 1fr;
-  }
-
-  .works__images {
-    transform: translateY(-5em);
-  }
-
-  .works__images img:nth-child(1) {
-    height: 230%;
-    object-fit: contain;
-    left: 0;
-  }
-
-  .works__images img:nth-child(2) {
-    top: 40%;
-    left: 17%;
-  }
-
-  .works__images img:nth-child(3) {
-    top: 80%;
-  }
-
-  .works__images img:nth-child(4) {
-    top: 130%;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 4em;
   }
 
   .works__text {
-    margin: 4em auto 0 auto;
-    transform: translateY(18em);
-    padding: 0 2em;
+    padding: 3em 2em 0 2em;
+  }
+}
+
+@media screen and (max-width: 393px) and (max-height: 696px) {
+  .bio-title {
+    height: 22%;
+    padding-left: 1em;
   }
 
-  .works__text p {
-    margin: 0;
+  .bio-title h2 {
+    font-size: 2rem;
+  }
+
+  .bio-text p {
+    font-size: 1rem;
+  }
+
+  .bio-title h2:nth-child(4),
+  .bio-title h2:nth-child(2) {
+    top: 47%;
+  }
+
+  .bio-title h3 {
+    font-size: 1.5rem;
+    left: 12%;
+    top: 30%;
+  }
+
+  .bio-title h2:nth-child(2) {
+    left: -14%;
+    top: 52%;
+  }
+
+  .button a {
+    font-size: 1.3rem !important;
+  }
+
+  .btn-contact {
+    margin-top: 5em;
+    margin-left: 1em;
+  }
+
+  .calligraffity {
+    left: 65%;
+    top: 20%;
+  }
+
+  .works {
+    margin-bottom: 0;
+  }
+
+  .works__images {
+    height: 93%;
+  }
+
+  .works__images img:nth-child(1),
+  .works__images img:nth-child(2),
+  .works__images img:nth-child(3),
+  .works__images img:nth-child(4) {
+    transform: translateY(-2em);
+  }
+
+  .works__images img:nth-child(2),
+  .works__images img:nth-child(3),
+  .works__images img:nth-child(4) {
+    width: 170px;
+    height: 100px;
+  }
+
+  .works__images img:nth-child(1) {
+    height: 100%;
+  }
+
+  .works__images img:nth-child(2) {
+    top: 20%;
+    left: 11%;
+  }
+
+  .works__images img:nth-child(3) {
+    top: 34%;
+    left: 42%;
+  }
+
+  .works__images img:nth-child(4) {
+    top: 53%;
+  }
+
+  .works__text {
+    margin-top: 0;
+    padding-top: 0;
+    transform: translateY(-3em);
   }
 
   h4:nth-child(4) {
-    margin-top: 12em;
+    margin-top: 0;
+  }
+
+  .follow-instagram {
+    margin-bottom: 2em;
+  }
+
+  .rights p {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media screen and (max-width: 360px) and (max-height: 640px) {
+  .bio-title h2 {
+    font-size: 1.7rem;
+  }
+
+  .bio-title h3 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+  }
+
+  .bio-title h2:nth-child(2) {
+    left: -11%;
+  }
+
+  .button a {
+    padding: 0.5em 1.4em !important;
+  }
+
+  .btn-contact {
+    margin-left: 1.5em;
+  }
+
+  .calligraffity {
+    left: 62%;
+    top: 12%;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .works__images img:nth-child(1),
+  .works__images img:nth-child(2),
+  .works__images img:nth-child(3),
+  .works__images img:nth-child(4) {
+    transform: translateY(-2em);
+  }
+
+  .works__text {
+    transform: translateY(-2em);
+  }
+
+  .works__text p {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 658px) {
+  .button a {
+    font-size: 1rem;
+  }
+
+  .btn-contact {
+    margin: 3em 0 0 0.8em;
+  }
+
+  .calligraffity {
+    left: 65%;
+    top: 7%;
+  }
+
+  .calligraffity p {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    margin-top: 2em;
+  }
+
+  h4:nth-child(4) {
+    margin-top: 1em;
   }
 }
 </style>

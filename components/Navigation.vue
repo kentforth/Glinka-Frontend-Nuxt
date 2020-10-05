@@ -374,4 +374,41 @@ export default {
     display: block;
   }
 }
+
+@media screen and (max-width: 393px) and (max-height: 696px) {
+  .nav-image {
+    width: 42%;
+  }
+
+  .navigation h2 {
+    font-size: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 360px) and (max-height: 640px) {
+
+
+
+  .instagram {
+    font-size: 2rem;
+  }
+
+  .nav-links a:first-child {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 568px) {
+  h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .nav-links a{
+    font-size: 1.3rem;
+  }
+}
 </style>
