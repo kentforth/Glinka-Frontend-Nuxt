@@ -83,7 +83,7 @@
         >
           <a
             class="insta-item"
-            v-for="image in images.data"
+            v-for="image in images"
             :key="image"
             href="https://www.instagram.com/aee.glinka/?igshid=1we4ciix7d3wm"
             target="_blank"
@@ -124,7 +124,13 @@ export default {
     mainTitle4: 'GLINKA',
     navOpen: false,
     navDefault: true,
-    images: ['one', 'two'],
+    images: [
+      require('../assets/images/test/image  1.jpg'),
+      require('../assets/images/test/image 2.jpg'),
+      require('../assets/images/test/image 3.jpg'),
+      require('../assets/images/test/image 4.jpg'),
+      require('../assets/images/test/image 5.jpg'),
+    ],
   }),
   methods: {
     changeLanguage(language) {},
@@ -142,7 +148,7 @@ export default {
   },
 
   mounted() {
-    this.feedImages()
+    // this.feedImages()
 
     $nuxt.$on('changeLanguage', (changeLanguage) => {
       if (changeLanguage === true) {

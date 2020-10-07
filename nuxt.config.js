@@ -21,12 +21,14 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~assets/css/main.css', '~assets/css/fonts.css', 'aos/dist/aos.css'],
+  css: ['~assets/css/main.css', '~assets/css/fonts.css', 'aos/dist/aos.css', 'vue-toasted/dist/vue-toasted.min.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/burger-button.js', ssr: false },
     { src: '~/plugins/aos', ssr: false, mode: 'client' },
+    { src: '~/plugins/vuelidate', ssr: true},
+
   ],
   purgeCSS: {
     whitelist: [
@@ -48,6 +50,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
     [
       'nuxt-fontawesome',
       {
