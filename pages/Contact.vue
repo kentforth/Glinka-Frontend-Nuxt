@@ -3,7 +3,9 @@
     <HeaderBackground />
     <div class="content">
       <div class="content__image">
-        <img src="../assets/images/letter.webp" alt="letter" />
+        <ImageTilt class="cols" max="30" perspective="500">
+          <img src="../assets/images/letter.webp" alt="letter" />
+        </ImageTilt>
       </div>
       <div class="content__form">
         <form class="form" @submit.prevent="sendMessage">
@@ -105,9 +107,10 @@
 import HeaderBackground from '../components/Header-Background'
 
 import { required, email } from 'vuelidate/lib/validators'
+import ImageTilt from '../components/ImageTilt'
 export default {
   name: 'Contact',
-  components: { HeaderBackground },
+  components: { ImageTilt, HeaderBackground },
   methods: {
     sendMessage() {
       this.$v.form.$touch()
@@ -115,16 +118,14 @@ export default {
         return
       }
 
-this.$toast.success('Message has been sent', {
-  position: 'bottom-center',
-  className: 'toast',
-  duration: 2500
-})
-
-
-
+      this.$toast.success('Message has been sent', {
+        position: 'bottom-center',
+        className: 'toast',
+        duration: 2500,
+      })
     },
   },
+
   data: () => ({
     form: {
       name: '',
@@ -314,6 +315,4 @@ textarea {
 .hideError {
   opacity: 0;
 }
-
-
 </style>
