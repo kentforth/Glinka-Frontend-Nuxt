@@ -134,21 +134,9 @@ export default {
   }),
   methods: {
     changeLanguage(language) {},
-    feedImages() {
-      this.$axios
-        .get('http://localhost:6080')
-        .then((response) => {
-          this.images = response
-          console.log(this.images)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    },
   },
 
   mounted() {
-    // this.feedImages()
 
     $nuxt.$on('changeLanguage', (changeLanguage) => {
       if (changeLanguage === true) {
@@ -364,6 +352,7 @@ h4:last-child {
   width: 100%;
   height: 100%;
 }
+
 
 .transform-home-open {
   animation: navOpen 0.5s ease;

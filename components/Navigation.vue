@@ -77,11 +77,9 @@ export default {
 
       if (this.isNavOpen) {
         this.navClass = 'nav-content-open'
-        // this.hamburgerClass = 'nav-hamburger-open'
       }
       if (!this.isNavOpen) {
         this.navClass = 'nav-content-closed'
-        // this.hamburgerClass = 'nav-hamburger-closed'
       }
       $nuxt.$emit('navOpen', this.isNavOpen)
     },

@@ -1,9 +1,16 @@
 <template>
-  <div class="contact">
+  <div
+    class="contact"
+    :class="{
+      'transform-home-open': navOpen,
+      'transform-home-closed': !navOpen,
+      'transform-home-default': navDefault,
+    }"
+  >
     <HeaderBackground />
     <div class="content">
       <div class="content__image">
-        <ImageTilt class="cols" max="30" perspective="500">
+        <ImageTilt class="cols" :max="max" :perspective="perspective">
           <img src="../assets/images/letter.webp" alt="letter" />
         </ImageTilt>
       </div>
@@ -108,6 +115,7 @@ import HeaderBackground from '../components/Header-Background'
 
 import { required, email } from 'vuelidate/lib/validators'
 import ImageTilt from '../components/ImageTilt'
+
 export default {
   name: 'Contact',
   components: { ImageTilt, HeaderBackground },
@@ -127,6 +135,10 @@ export default {
   },
 
   data: () => ({
+    navOpen: false,
+    navDefault: true,
+    max: 30,
+    perspective: 500,
     form: {
       name: '',
       email: '',
@@ -141,6 +153,12 @@ export default {
       subject: { required },
       message: { required },
     },
+  },
+  mounted() {
+    $nuxt.$on('navOpen', (navOpen) => {
+      navOpen ? (this.navOpen = true) : (this.navOpen = false)
+      this.navDefault = false
+    })
   },
 }
 </script>
@@ -200,6 +218,11 @@ h3 {
   border-radius: 37px;
   padding: 0.3em 1em;
   z-index: 999;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  box-shadow: 0 0 15px var(--green);
 }
 
 .input::placeholder {
@@ -250,6 +273,8 @@ textarea {
 .area-message {
   width: 90%;
   z-index: 999;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
 }
 
 .error-name,
@@ -264,8 +289,12 @@ textarea {
 }
 
 .error-email {
-  width: 34%;
+  width: 30%;
   right: 8%;
+}
+
+.error-email:nth-child(3) {
+  width: 34%;
 }
 
 .error-subject {
@@ -314,5 +343,352 @@ textarea {
 
 .hideError {
   opacity: 0;
+}
+
+.transform-home-open {
+  animation: navOpen 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+.transform-home-closed {
+  animation: navClosed 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+.transform-home-default {
+  animation: defaultAnim 0.5s ease;
+  animation-fill-mode: forwards;
+}
+
+/*Animation for home*/
+@keyframes defaultAnim {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes navOpen {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(var(--nav-width));
+  }
+}
+
+@keyframes navClosed {
+  0% {
+    transform: translateX(var(--nav-width));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/*MEDIA QUERIES*/
+/* laptops 125% zoom*/
+@media (-webkit-min-device-pixel-ratio: 1.25) {
+  .content {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  .input {
+    font-size: 1.7rem;
+  }
+
+  .area-message {
+    width: 100%;
+    height: 200px;
+  }
+
+  .error-message {
+    width: 45%;
+  }
+
+  .error-subject {
+    width: 43%;
+  }
+
+  .error-email {
+    width: 40%;
+  }
+
+  .error-email:nth-child(3) {
+    width: 45%;
+  }
+
+  .error-name {
+    width: 40%;
+  }
+
+  .error-message,
+  .error-subject,
+  .error-email,
+  .error-name {
+    right: 4.5%;
+    padding: 0.3em 0;
+  }
+  .btn-send {
+    font-size: 1.6rem;
+    margin: 0 auto 0.5em auto;
+  }
+}
+
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+  h3 {
+    margin-top: 0;
+    font-size: 2rem;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .input {
+    width: 90%;
+    font-size: 1.7rem;
+  }
+
+  .message {
+    width: 100%;
+  }
+
+  .error-message {
+    width: 42%;
+  }
+
+  .error-subject,
+  .error-email,
+  .error-name {
+    width: 40%;
+    padding: 0.3em 0;
+  }
+
+  .error-email {
+    width: 36%;
+  }
+
+  .error-email:nth-child(3) {
+    width: 40%;
+  }
+
+  .error-name {
+    width: 37%;
+  }
+}
+
+@media screen and (max-width: 1200px) and (max-height: 720px) {
+  .content {
+    margin-top: 1.5em;
+    padding: 0 2em;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .btn-send {
+    font-size: 1.6rem;
+  }
+
+  .content__image {
+    margin-left: 2em;
+  }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1000px) {
+  .contact {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .content {
+    padding: 0 2em;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  h3 {
+    margin-top: 1em;
+  }
+
+  .content__form {
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    width: 100%;
+    margin: 0;
+  }
+
+  .content__image {
+    padding: 0;
+  }
+
+  .area-message {
+    width: 100%;
+  }
+
+  .error {
+    right: 1.2em;
+  }
+
+  .error-message {
+    width: 39%;
+  }
+
+  .error-subject {
+    width: 38%;
+  }
+
+  .error-email {
+    width: 34%;
+  }
+  .error-email:nth-child(3) {
+    width: 38%;
+  }
+
+  .error-name {
+    width: 35%;
+  }
+}
+
+@media screen and (max-width: 393px) and (max-height: 696px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+  .content__image {
+    margin: 0;
+    width: 50%;
+  }
+
+  .area-message {
+    width: 90%;
+  }
+
+  .error p {
+    font-size: 0.6rem;
+  }
+
+  .error {
+    right: 2em;
+  }
+
+  .error-message {
+    width: 42%;
+  }
+
+  .error-subject {
+    width: 40%;
+  }
+
+  .error-email {
+    width: 37%;
+  }
+
+  .error-email:nth-child(3) {
+    width: 42%;
+  }
+
+  .error-name {
+    width: 38%;
+  }
+}
+
+@media screen and (max-width: 360px) and (max-height: 640px) {
+  .error {
+    right: 1.5em;
+  }
+
+  .error-message {
+    width: 47%;
+  }
+
+  .error-subject {
+    width: 45%;
+  }
+
+  .error-email {
+    width: 42%;
+  }
+
+  .error-email:nth-child(3) {
+    width: 47%;
+  }
+
+  .error-name {
+    width: 42%;
+  }
+
+  .btn-send {
+    width: 88%;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 568px) {
+  h3 {
+    margin-top: 0;
+    font-size: 1.6rem;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .input {
+    font-size: 1.5rem;
+  }
+
+  .input::placeholder {
+    font-size: 1rem;
+  }
+
+  .error {
+    padding: 4px 0;
+    transform: translateY(-3px);
+  }
+
+  .error p {
+    font-size: 0.5rem;
+  }
+
+  .error-message {
+    width: 38%;
+  }
+
+  .error-subject {
+    width: 37%;
+  }
+
+  .error-email {
+    width: 35%;
+  }
+
+  .error-email:nth-child(3) {
+    width: 37%;
+  }
+
+  .error-name {
+    width: 34%;
+  }
+
+  .btn-send {
+    font-size: 1.4rem;
+    margin-bottom: 1em;
+  }
 }
 </style>

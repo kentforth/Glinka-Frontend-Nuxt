@@ -59,4 +59,108 @@ h2:nth-child(3) {
   right: -30%;
   z-index: 0;
 }
+
+/*MEDIA QUERIES*/
+@media (-webkit-min-device-pixel-ratio: 1.25) {
+  .header {
+    height: 7em;
+  }
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 10rem;
+  }
+
+  h2:nth-child(2) {
+    top: -40%;
+    right: 30%;
+  }
+
+  h2:nth-child(3) {
+    top: -45%;
+  }
+}
+
+@media screen and (max-width: 1366px) and (max-height: 768px) {
+  .header {
+    height: 7em;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 0.5em;
+  }
+
+  h2:nth-child(2) {
+    font-size: 10rem;
+    top: -50%;
+    right: 14%;
+  }
+
+  h2:nth-child(3) {
+    font-size: 10rem;
+    top: -40%;
+    right: -48%;
+  }
+}
+
+@media screen and (max-width: 1200px) and (max-height: 720px) {
+  h2:nth-child(2) {
+    right: -1%;
+  }
+
+  h2:nth-child(3) {
+    right: -74%;
+  }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1000px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2:nth-child(2),
+  h2:nth-child(3) {
+    font-size: 8rem;
+  }
+
+  h2:nth-child(2) {
+    top: -7%;
+    right: -8%;
+  }
+
+  h2:nth-child(3) {
+    top: 8%;
+    right: -70%;
+  }
+}
+
+@media screen and (max-width: 393px) and (max-height: 696px) {
+  h1 {
+    font-size: 2.3rem;
+    margin: 1.3em 0 0 0;
+  }
+
+  h2:nth-child(2),
+  h2:nth-child(3) {
+    font-size: 5.5rem;
+  }
+
+  h2:nth-child(2) {
+    top: 7%;
+    right: -38%;
+  }
+
+  h2:nth-child(3) {
+    top: 37%;
+    right: -105%;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 568px) {
+  h2:nth-child(3) {
+    right: -121%;
+  }
+}
 </style>
