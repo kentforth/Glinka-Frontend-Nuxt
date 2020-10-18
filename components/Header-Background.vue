@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="container">
-      <h1>Contact</h1>
+      <h1>{{title}}</h1>
       <h2>GLINKA</h2>
       <h2>ANASTASIYA</h2>
     </div>
@@ -11,6 +11,12 @@
 <script>
 export default {
   name: 'Header-Background',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

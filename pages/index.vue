@@ -125,11 +125,11 @@ export default {
     navOpen: false,
     navDefault: true,
     images: [
-      require('../assets/images/test/image  1.jpg'),
-      require('../assets/images/test/image 2.jpg'),
-      require('../assets/images/test/image 3.jpg'),
-      require('../assets/images/test/image 4.jpg'),
-      require('../assets/images/test/image 5.jpg'),
+      require('../assets/images/home/instagram 1.webp'),
+      require('../assets/images/home/instagram 2.webp'),
+      require('../assets/images/home/instagram 3.webp'),
+      require('../assets/images/home/instagram 4.webp'),
+      require('../assets/images/home/instagram 5.webp'),
     ],
   }),
   methods: {

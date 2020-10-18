@@ -7,7 +7,7 @@
       'transform-home-default': navDefault,
     }"
   >
-    <HeaderBackground />
+    <HeaderBackground :title="title"/>
     <div class="content">
       <div class="content__image">
         <ImageTilt class="cols" :max="max" :perspective="perspective">
@@ -139,6 +139,7 @@ export default {
     navDefault: true,
     max: 30,
     perspective: 500,
+    title: 'Contact',
     form: {
       name: '',
       email: '',

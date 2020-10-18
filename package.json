@@ -20,7 +20,9 @@
     "nuxt": "^2.14.5",
     "nuxt-fontawesome": "^0.4.0",
     "purgecss-whitelister": "^2.4.0",
+    "vue": "^2.6.12",
     "vue-burger-button": "^0.1.2",
+    "vue-easy-lightbox": "^0.11.0",
     "vue-toast-notification": "^0.5.4",
     "vuelidate": "^0.7.5"
   },
