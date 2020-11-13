@@ -1,12 +1,12 @@
 <template>
-    <div class="price full-background">
-      <h1>Price</h1>
+    <div class="admin-layout">
+      <Nuxt />
     </div>
 </template>
 
 <script>
   export default {
-    name: 'Price'
+    name: 'admin'
   }
 </script>
 

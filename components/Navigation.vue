@@ -6,11 +6,10 @@
 
     <h2>Anastasiya Glinka</h2>
     <div class="nav-links">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/about">About</NuxtLink>
-      <NuxtLink to="/portfolio">Portfolio</NuxtLink>
-      <NuxtLink to="/price">Price</NuxtLink>
-      <NuxtLink to="/contact">Contact</NuxtLink>
+      <NuxtLink to="/" @click.native="closeNav">Home</NuxtLink>
+      <NuxtLink to="/about" @click.native="closeNav">About</NuxtLink>
+      <NuxtLink to="/portfolio" @click.native="closeNav">Portfolio</NuxtLink>
+      <NuxtLink to="/contact" @click.native="closeNav">Contact</NuxtLink>
     </div>
 
     <a
@@ -77,11 +76,23 @@ export default {
 
       if (this.isNavOpen) {
         this.navClass = 'nav-content-open'
+        document.body.style.overflow = 'hidden'
       }
       if (!this.isNavOpen) {
         this.navClass = 'nav-content-closed'
+        document.body.style.overflow = 'auto'
       }
       $nuxt.$emit('navOpen', this.isNavOpen)
+    },
+    closeNav() {
+
+      if (window.innerWidth <= 1088) {
+
+        this.isNavOpen = false;
+        this.navClass = 'nav-content-closed'
+        document.body.style.overflow = 'auto'
+        $nuxt.$emit('navOpen', this.isNavOpen)
+      }
     },
     handleResize() {
       this.isNavOpen = window.innerWidth > 900

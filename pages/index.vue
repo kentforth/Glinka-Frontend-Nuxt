@@ -617,6 +617,9 @@ h4:last-child {
 }
 
 @media screen and (max-width: 768px) and (max-height: 1000px) {
+
+
+
   .home {
     margin-left: 0;
     width: 100%;
