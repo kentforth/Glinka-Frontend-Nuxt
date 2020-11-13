@@ -1,7 +1,7 @@
 <template>
   <div class="navigation" :class="navClass">
     <NuxtLink to="/" class="nav-image">
-      <img src="../assets/images/avatar.webp" alt="" />
+      <img src="~/assets/images/avatar.webp" alt="" />
     </NuxtLink>
 
     <h2>Anastasiya Glinka</h2>
