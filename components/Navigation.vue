@@ -77,6 +77,7 @@ export default {
       if (this.isNavOpen) {
         this.navClass = 'nav-content-open'
         document.body.style.overflow = 'hidden'
+        document.body.style.position = 'relative';
       }
       if (!this.isNavOpen) {
         this.navClass = 'nav-content-closed'
