@@ -58,13 +58,7 @@
         <img src="../assets/images/avatar.webp" alt="avatar"/>
         <img src="../assets/images/my-works-1.webp" alt="works-1"/>
       </div>
-      <div class="works__text">
-        <p>
-          Simple text about Glinka’s life. This example was made by Tema. He’s
-          backend developer, playing guitar and love parrots. Simple text about
-          Glinka’s life. This example was made by Tema. He’s backend developer,
-          playing guitar and love parrots.
-        </p>
+      <div class="works__button">
         <ButtonPrimary
           :text="worksText"
           :link="worksLink"
@@ -249,7 +243,6 @@
     top: 10%;
     left: 80%;
     width: 10%;
-
     margin: 0;
   }
 
@@ -260,78 +253,68 @@
   }
 
   .works {
-    background-color: var(--primary);
-    grid-template-rows: 1fr;
-    margin-bottom: 15em;
-    height: 80%;
     width: 100%;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    grid-template-columns: 1fr 1fr;
+    height: 850px;
+    margin-bottom: 2em;
+    position: relative;
+    display: flex;
   }
 
   .works__images {
-    position: relative;
     width: 100%;
-    height: 100%;
-    transform: translateY(-4em);
-  }
-
-  .works__images img {
-    width: 100%;
-    position: absolute;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .works__images img:nth-child(1) {
-    z-index: 1;
-    opacity: 0.2;
     top: 0;
     left: 0;
   }
 
-  .works__images img:nth-child(2) {
-    z-index: 2;
-    top: 30%;
-    left: 15%;
+  .works__images img {
+    position: relative;
+    object-fit: cover;
+    object-position: center;
   }
 
-  .works__images img:nth-child(3) {
-    z-index: 3;
-    top: 60%;
-    left: 47%;
-  }
-
-  .works__images img:nth-child(4) {
-    z-index: 4;
-    top: 90%;
-    left: 25%;
-  }
 
   .works__images img:nth-child(2),
   .works__images img:nth-child(3),
   .works__images img:nth-child(4) {
-    width: 300px;
-    height: 220px;
+    width: 35%;
+    height: 38%;
     box-shadow: 0 22px 44px -12px rgba(0, 0, 0, 0.35);
   }
 
-  .works__text {
-    padding-right: 4em;
-    margin: 6em auto 0 auto;
-    text-align: center;
+  .works__images img:nth-child(1) {
+    z-index: 1;
+    width: 57%;
+    opacity: 0.2;
+    bottom: 6%;
+    left: 21%;
   }
 
-  .works__text p {
-    text-align: left;
+  .works__images img:nth-child(2) {
+    z-index: 2;
+    bottom: 50%;
+    right: 52%;
   }
 
-  .btn-portfolio {
-    margin-top: 5em;
+  .works__images img:nth-child(3) {
+    z-index: 4;
+    width: 30%;
+    bottom: 75%;
+    left: 35%;
   }
+
+  .works__images img:nth-child(4) {
+    z-index: 3;
+    bottom: 88.3%;
+    left: 29%;
+  }
+
+  .works__button {
+    position: absolute;
+    bottom: 10%;
+    left: 42%;
+    z-index: 999;
+  }
+
 
   .follow-instagram {
     display: flex;
@@ -408,6 +391,41 @@
       font-size: 4rem;
     }
 
+    .works {
+      height: 650px;
+    }
+
+    .works__images img:nth-child(1) {
+      width: 60%;
+    }
+
+    .works__images img:nth-child(2),
+    .works__images img:nth-child(3),
+    .works__images img:nth-child(4) {
+      width: 30%;
+      height: 40%;
+    }
+
+    .works__images img:nth-child(2) {
+      bottom: 45%;
+    }
+
+    .works__images img:nth-child(3) {
+      width: 30%;
+      bottom: 75%;
+      left: 36%;
+    }
+
+    .works__images img:nth-child(4) {
+      bottom: 85.3%;
+      left: 32%;
+    }
+
+    .works__button {
+      bottom: 5%;
+      left: 39%;
+    }
+
     h4 {
       font-size: 1.7rem;
     }
@@ -425,41 +443,9 @@
       font-size: 1.8rem;
     }
 
-    .works {
-      margin-bottom: 3em;
-    }
 
-    .works__text {
-      padding-right: 1.5em;
-    }
-
-    .works__images img:nth-child(2),
-    .works__images img:nth-child(3),
-    .works__images img:nth-child(4) {
-      width: 250px;
-      height: 180px;
-    }
-
-    .works__images img:nth-child(2) {
-      top: 27%;
-      left: 10%;
-    }
-
-    .works__images img:nth-child(3) {
-      top: 50%;
-      left: 45%;
-    }
-
-    .works__images img:nth-child(4) {
-      top: 80%;
-    }
-
-    h4:nth-child(4) {
+    h4 {
       margin-top: 0;
-    }
-
-    h4:nth-child(4) {
-      margin-top: 4em;
     }
 
     .insta-item {
@@ -473,35 +459,35 @@
       left: -12%;
     }
 
-    .calligraffity {
-      top: 5%;
-    }
-
-    .works__images img:nth-child(2),
-    .works__images img:nth-child(3),
-    .works__images img:nth-child(4) {
-      width: 250px;
-      height: 180px;
+    .works {
+      height: 600px;
     }
 
     .works__images img:nth-child(2) {
-      top: 20%;
-      left: 8%;
+      right: 50%;
+      bottom: 45%;
     }
 
     .works__images img:nth-child(3) {
-      top: 37%;
-      left: 45%;
+      width: 30%;
+      bottom: 70%;
+      left: 34%;
     }
 
     .works__images img:nth-child(4) {
-      top: 60%;
-      left: 25%;
+      bottom: 83.3%;
+      left: 27%;
     }
 
-    h4:nth-child(4) {
-      margin-top: 0;
+    .works__button {
+      bottom: 6%;
+      left: 37%;
     }
+
+    .calligraffity {
+      top: 0;
+    }
+
 
     .follow-instagram {
       padding: 0 2em;
@@ -525,10 +511,6 @@
       top: -5%;
       left: 77%;
     }
-
-    h4:nth-child(4) {
-      margin-top: 3em;
-    }
   }
 
   @media screen and (max-width: 1200px) and (max-height: 720px) {
@@ -542,6 +524,15 @@
 
     .bio-text p {
       font-size: 1.5rem;
+    }
+
+    .works {
+      height: 500px;
+    }
+
+    .works__button {
+      bottom: 6%;
+      left: 32%;
     }
   }
 
@@ -573,50 +564,32 @@
     }
 
     .works {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      justify-content: center;
-      justify-items: center;
-      align-items: center;
-      margin-bottom: 0;
-    }
-
-    .works__images {
-      transform: translateY(0);
+      height: 500px;
     }
 
     .works__images img:nth-child(1) {
-      height: 230%;
-      object-fit: contain;
-      left: 0;
+      width: 75%;
+      left: 10%;
     }
 
     .works__images img:nth-child(2) {
-      top: 40%;
-      left: 17%;
+      right: -7%;
+      bottom: 85%;
     }
 
     .works__images img:nth-child(3) {
-      top: 80%;
+      left: -2%;
     }
 
     .works__images img:nth-child(4) {
-      top: 130%;
+      left: 59%;
+      bottom: 123.3%;
     }
 
-    .works__text {
-      margin: 4em auto 0 auto;
-      transform: translateY(18em);
-      padding: 0 2em;
+    .works__button {
+      left: 28%;
     }
 
-    .works__text p {
-      margin: 0;
-    }
-
-    h4:nth-child(4) {
-      margin-top: 10em;
-    }
   }
 
   @media screen and (max-width: 768px) and (max-height: 1000px) {
@@ -670,14 +643,13 @@
     }
 
     .works {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-      margin-bottom: 4em;
+      height: 450px;
     }
 
-    .works__text {
-      padding: 3em 2em 0 2em;
+    .works__button {
+      left: 31.5%;
     }
+
   }
 
   @media screen and (max-width: 393px) and (max-height: 696px) {
@@ -704,13 +676,13 @@
 
     .bio-title h2:nth-child(4) {
       margin: 0;
-      transform:translateY(170%);
+      transform: translateY(170%);
     }
 
     .bio-title h3 {
       margin: 0;
       font-size: 1.5rem;
-      transform:translateY(150%);
+      transform: translateY(150%);
     }
 
     .bio-text {
@@ -739,58 +711,40 @@
     }
 
     .works {
-      margin-bottom: 0;
+      height: 400px;
+      margin-bottom: 7em;
     }
 
-    .works__images {
-      height: 93%;
+    .works__images img {
+      width: 55% !important;
     }
 
     .works__images img:nth-child(1) {
       opacity: 0;
     }
 
-    .works__images img:nth-child(1),
-    .works__images img:nth-child(2),
-    .works__images img:nth-child(3),
-    .works__images img:nth-child(4) {
-      transform: translateY(-3em);
-    }
-
-    .works__images img:nth-child(2),
-    .works__images img:nth-child(3),
-    .works__images img:nth-child(4) {
-      width: 190px;
-      height: 130px;
-    }
-
-    .works__images img:nth-child(1) {
-      height: 100%;
-    }
-
     .works__images img:nth-child(2) {
-      top: 20%;
-      left: 11%;
+      bottom: 45%;
+      right: 0;
+      left: 10%;
     }
 
     .works__images img:nth-child(3) {
-      top: 40%;
-      left: 42%;
+      bottom: 65%;
+      left: 36%;
+      z-index: 3;
     }
 
     .works__images img:nth-child(4) {
-      top: 60%;
+      bottom: 75%;
+      z-index: 4;
+      left: 23%;
     }
 
-    .works__text {
-      margin-top: 0;
-      padding-top: 0;
-      transform: translateY(-3em);
+    .works__button {
+      bottom: -18%;
     }
 
-    h4:nth-child(4) {
-      margin-top: 0;
-    }
 
     .follow-instagram {
       margin-bottom: 2em;
@@ -817,28 +771,6 @@
       font-size: 1.5rem;
     }
 
-    .works__images img:nth-child(1),
-    .works__images img:nth-child(2),
-    .works__images img:nth-child(3),
-    .works__images img:nth-child(4) {
-      transform: translateY(-3em);
-    }
-
-    .works__images img:nth-child(3) {
-      left: 37%;
-    }
-
-    .works__images img:nth-child(4) {
-      top: 65%;
-    }
-
-    .works__text {
-      transform: translateY(-2em);
-    }
-
-    .works__text p {
-      font-size: 1.3rem;
-    }
   }
 
   @media screen and (max-width: 320px) and (max-height: 658px) {
@@ -865,6 +797,10 @@
 
     .btn-contact {
       margin: 3em 0 0 0.8em;
+    }
+
+    .works {
+      padding-top: 1em;
     }
 
 
