@@ -652,7 +652,7 @@
 
   }
 
-  @media screen and (max-width: 393px) and (max-height: 696px) {
+  @media screen and (max-width: 393px) {
 
     .info {
       grid-template-columns: 1fr;
@@ -710,6 +710,10 @@
       display: none;
     }
 
+    h4 {
+      margin-top: 1em;
+    }
+
     .works {
       height: 400px;
       margin-bottom: 7em;
@@ -755,7 +759,7 @@
     }
   }
 
-  @media screen and (max-width: 360px) and (max-height: 640px) {
+  @media screen and (max-width: 360px) {
 
 
     .button a {
