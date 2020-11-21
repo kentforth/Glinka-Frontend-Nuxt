@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <h4>MY WORKS</h4>
+    <h4>{{worksTextTitle}}</h4>
 
     <!--WORKS-->
     <div
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <h4>FOLLOW MY INSTAGRAMM</h4>
+    <h4>{{instagramTitle}}</h4>
 
     <div
       class="follow-instagram"
@@ -110,6 +110,8 @@
       contactMeLink: '/contact',
       worksText: 'See more',
       worksLink: '/portfolio',
+      worksTextTitle: 'MY WORKS',
+      instagramTitle: 'FOLLOW MY INSTAGRAM',
       languageENG: true,
       mainText: mainTextENG,
       mainTitle: 'I\'m GLINKA',
@@ -126,10 +128,7 @@
         require('../assets/images/home/instagram 5.webp')
       ]
     }),
-    methods: {
-      changeLanguage(language) {
-      }
-    },
+    methods: {},
 
     mounted() {
 
@@ -140,12 +139,20 @@
           this.mainTitle2 = 'Hello,'
           this.mainTitle3 = 'ANASTASIYA'
           this.mainTitle4 = 'GLINKA'
+          this.contactMeText = 'Contact Me'
+          this.worksTextTitle = 'MY WORKS'
+          this.instagramTitle = 'FOLLOW MY INSTAGRAM'
+          this.worksText = 'See more'
         } else {
           this.mainText = mainTextRU
           this.mainTitle = 'Я ГЛИНКА'
           this.mainTitle2 = 'Привет,'
           this.mainTitle3 = 'АНАСТАСИЯ'
           this.mainTitle4 = 'ГЛИНКА'
+          this.contactMeText = 'Напишите Мне'
+          this.worksTextTitle = 'МОИ РАБОТЫ'
+          this.instagramTitle = 'ПОДПИСЫВАЙТЕСЬ НА МОЙ ИНСТАГРАММ'
+          this.worksText = 'Смотреть дальше'
         }
       })
 

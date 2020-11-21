@@ -119,6 +119,11 @@ import ImageTilt from '../components/ImageTilt'
 export default {
   name: 'Contact',
   components: { ImageTilt, HeaderBackground },
+  head() {
+    return {
+      title: 'Contact'
+    }
+  },
   methods: {
     sendMessage() {
       this.$v.form.$touch()

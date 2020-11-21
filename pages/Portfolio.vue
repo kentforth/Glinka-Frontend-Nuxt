@@ -53,6 +53,12 @@ const images = [
 export default {
   name: 'Portfolio',
   components: { HeaderBackground },
+  head() {
+    return {
+      title: 'Portfolio'
+
+    }
+  },
   data: () => ({
     title: 'Portfolio',
     images: images,

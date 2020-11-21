@@ -107,7 +107,14 @@ export default {
       $nuxt.$emit('changeLanguage', this.languageENG)
     },
   },
-  mounted() {},
+  mounted() {
+    if(this.navOpen){
+      document.body.classList.add('no-scroll')
+    }
+    else {
+      document.body.classList.remove('no-scroll')
+    }
+  },
 
   created() {
     if (process.client) {
@@ -124,6 +131,11 @@ export default {
 </script>
 
 <style scoped>
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
 .navigation {
   width: var(--nav-width);
   background-color: var(--dark);
