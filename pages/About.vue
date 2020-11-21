@@ -421,7 +421,66 @@
         font-size: 1.2rem;
         margin-bottom: 0;
       }
+
+      .footer p{
+        font-size: 0.7rem;
+      }
     }
 
+  }
+
+  @media screen and (max-width: 393px) {
+
+    .container h1 {
+      top: 18.5%;
+      left: 32%;
+    }
+
+    .text-bg {
+      top: 18%;
+    }
+
+    .about__text {
+      top: 140%;
+      height: 90%;
+    }
+
+    .text-bg h2 {
+      font-size: 2.8rem;
+    }
+
+    .works {
+      margin-top: 130%;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+
+    .container h1 {
+      top: 16.5%;
+      left: 29%;
+    }
+
+    .about__text {
+      height: 110%;
+      top: 145%;
+    }
+
+    .about__text h4 {
+      font-size: 1.4rem;
+    }
+
+    .text-bg {
+      top: 16%;
+    }
+
+    .text-bg h2 {
+      font-size: 2.5rem;
+    }
+
+    .works {
+      margin-top: 160%;
+      padding: 0;
+    }
   }
 </style>
