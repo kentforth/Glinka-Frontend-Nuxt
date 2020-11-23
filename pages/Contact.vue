@@ -16,14 +16,14 @@
       </div>
       <div class="content__form">
         <form class="form" @submit.prevent="sendMessage">
-          <h3>Get in touch</h3>
+          <h3>{{contactMe}}</h3>
 
           <!--NAME-->
           <div class="input-field">
             <input
               type="text"
               class="input"
-              placeholder="Name"
+              :placeholder="name"
               v-model.trim="form.name"
               :class="$v.form.name.$error ? 'invalid-feedback' : ''"
             />
@@ -41,7 +41,7 @@
             <input
               type="text"
               class="input"
-              placeholder="Email"
+              :placeholder="email"
               v-model.trim="form.email"
               :class="$v.form.email.$error ? 'invalid-feedback' : ''"
             />
@@ -70,7 +70,7 @@
             <input
               type="text"
               class="input"
-              placeholder="Subject"
+              :placeholder="subject"
               v-model.trim="form.subject"
               :class="$v.form.subject.$error ? 'invalid-feedback' : ''"
             />
@@ -92,7 +92,7 @@
               v-model.trim="form.message"
               :class="$v.form.message.$error ? 'invalid-feedback' : ''"
               class="input area-message"
-              placeholder="Message"
+              :placeholder="message"
             ></textarea>
             <div
               class="error-message error"
@@ -103,7 +103,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-send">Send</button>
+          <button type="submit" class="btn-send">{{buttonText}}</button>
         </form>
       </div>
     </div>
@@ -145,6 +145,12 @@ export default {
     max: 30,
     perspective: 500,
     title: 'Contact',
+    contactMe: 'Get in touch',
+    buttonText: 'Send',
+    name: 'Name',
+    email: 'Email',
+    subject: 'Subject',
+    message: 'Message',
     form: {
       name: '',
       email: '',
@@ -164,6 +170,26 @@ export default {
     $nuxt.$on('navOpen', (navOpen) => {
       navOpen ? (this.navOpen = true) : (this.navOpen = false)
       this.navDefault = false
+    })
+
+    $nuxt.$on('changeLanguage', (changeLanguage) => {
+      if (changeLanguage === true) {
+        this.title = 'Contact'
+        this.contactMe = 'Get in touch'
+        this.buttonText = 'Send'
+        this.name = 'Name'
+        this.email = 'Email'
+        this.subject = 'Subject'
+        this.message = 'Message'
+      } else {
+        this.title = 'Контакт'
+        this.contactMe = 'Связаться со мной'
+        this.buttonText = 'Отправить'
+        this.name = 'Имя'
+        this.email = 'Адрес эл. почты'
+        this.subject = 'Тема'
+        this.message = 'Сообщение'
+      }
     })
   },
 }

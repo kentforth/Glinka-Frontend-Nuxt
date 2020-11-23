@@ -32,6 +32,8 @@
 
 <script>
 import HeaderBackground from '../components/Header-Background'
+import { mainTextENG } from '../language/english/home'
+import { mainTextRU } from '../language/russian/home'
 
 const images = [
   require('../assets/images/home/instagram 1.webp'),
@@ -77,6 +79,14 @@ export default {
     $nuxt.$on('navOpen', (navOpen) => {
       navOpen ? (this.navOpen = true) : (this.navOpen = false)
       this.navDefault = false
+    })
+
+    $nuxt.$on('changeLanguage', (changeLanguage) => {
+      if (changeLanguage === true) {
+        this.title = 'Portfolio'
+      } else {
+        this.title = 'Портфолио'
+      }
     })
   }
 }
