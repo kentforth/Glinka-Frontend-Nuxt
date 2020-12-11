@@ -14,24 +14,24 @@
       <!--BIO-->
       <div class="bio">
         <div class="bio-title">
-          <h2>{{ mainTitle4 }}</h2>
-          <h2>{{ mainTitle3 }}</h2>
-          <h3>{{ mainTitle2 }}</h3>
-          <h2>{{ mainTitle }}</h2>
+          <h2>{{ home.mainTitle4 }}</h2>
+          <h2>{{ home.mainTitle3 }}</h2>
+          <h3>{{ home.mainTitle2 }}</h3>
+          <h2>{{ home.mainTitle }}</h2>
         </div>
 
         <!--TEXT-->
         <div class="bio-text">
           <div class="container">
             <p>
-              {{ mainText }}
+              {{ home.mainText }}
             </p>
           </div>
         </div>
 
         <!--BUTTON CONTACT-->
         <ButtonPrimary
-          :text="contactMeText"
+          :text="home.contactMeText"
           :link="contactMeLink"
           class="btn-contact"
         />
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <h4>{{worksTextTitle}}</h4>
+    <h4>{{home.worksTextTitle}}</h4>
 
     <!--WORKS-->
     <div
@@ -60,14 +60,14 @@
       </div>
       <div class="works__button">
         <ButtonPrimary
-          :text="worksText"
+          :text="home.worksText"
           :link="worksLink"
           class="btn-portfolio"
         />
       </div>
     </div>
 
-    <h4>{{instagramTitle}}</h4>
+    <h4>{{home.instagramTitle}}</h4>
 
     <div
       class="follow-instagram"
@@ -91,8 +91,7 @@
 </template>
 
 <script>
-  import { mainTextRU } from '../language/russian/home'
-  import { mainTextENG } from '../language/english/home'
+  import {mapState} from 'vuex'
 
   import ButtonPrimary from '../components/Button-Primary'
   import Rights from '../components/Rights'
@@ -106,18 +105,8 @@
       }
     },
     data: () => ({
-      contactMeText: 'Contact Me',
       contactMeLink: '/contact',
-      worksText: 'See more',
       worksLink: '/portfolio',
-      worksTextTitle: 'MY WORKS',
-      instagramTitle: 'FOLLOW MY INSTAGRAM',
-      languageENG: true,
-      mainText: mainTextENG,
-      mainTitle: 'I\'m GLINKA',
-      mainTitle2: 'Hello,',
-      mainTitle3: 'ANASTASIYA',
-      mainTitle4: 'GLINKA',
       navOpen: false,
       navDefault: true,
       images: [
@@ -128,33 +117,13 @@
         require('../assets/images/home/instagram 5.webp')
       ]
     }),
-    methods: {},
-
-    mounted() {
-
-      $nuxt.$on('changeLanguage', (changeLanguage) => {
-        if (changeLanguage === true) {
-          this.mainText = mainTextENG
-          this.mainTitle = 'I\'m GLINKA'
-          this.mainTitle2 = 'Hello,'
-          this.mainTitle3 = 'ANASTASIYA'
-          this.mainTitle4 = 'GLINKA'
-          this.contactMeText = 'Contact Me'
-          this.worksTextTitle = 'MY WORKS'
-          this.instagramTitle = 'FOLLOW MY INSTAGRAM'
-          this.worksText = 'See more'
-        } else {
-          this.mainText = mainTextRU
-          this.mainTitle = 'Я ГЛИНКА'
-          this.mainTitle2 = 'Привет,'
-          this.mainTitle3 = 'АНАСТАСИЯ'
-          this.mainTitle4 = 'ГЛИНКА'
-          this.contactMeText = 'Напишите Мне'
-          this.worksTextTitle = 'МОИ РАБОТЫ'
-          this.instagramTitle = 'ПОДПИСЫВАЙТЕСЬ НА МОЙ ИНСТАГРАММ'
-          this.worksText = 'Смотреть дальше'
-        }
+    computed: {
+      ...mapState('language', {
+        home: 'home'
       })
+    },
+    methods: {},
+    mounted() {
 
       $nuxt.$on('navOpen', (navOpen) => {
         navOpen ? (this.navOpen = true) : (this.navOpen = false)

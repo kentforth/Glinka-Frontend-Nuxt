@@ -7,7 +7,7 @@
     }"
   >
     <div class="container">
-      <h1>{{headerTitle}}</h1>
+      <h1>{{about.title}}</h1>
     </div>
 
     <div class="text-bg">
@@ -21,8 +21,8 @@
         <img src="../assets/images/info.webp" alt="info">
       </div>
       <div class="about__text">
-        <h4>{{titleAbout}}</h4>
-        <p>{{textAbout}}</p>
+        <h4>{{about.name}}</h4>
+        <p>{{home.mainText}}</p>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
     >
-      <h4>{{worksTitle}}</h4>
+      <h4>{{about.worksTitle}}</h4>
       <div class="works-images">
         <div
           class="image"
@@ -63,8 +63,7 @@
 </template>
 
 <script>
-  import { mainTextRU } from '../language/russian/home'
-  import { mainTextENG } from '../language/english/home'
+  import { mapState } from 'vuex'
 
   import HeaderBackground from '../components/Header-Background'
 
@@ -85,43 +84,29 @@
       }
     },
     data: () => ({
-      title: 'About me',
       images: images,
       visible: false,
       index: 0,
-      headerTitle: 'About me',
-      titleAbout: 'Anastasiya Glinka',
-      textAbout: mainTextENG,
-      worksTitle: 'MY FAVOURITE WORKS',
       navOpen: false,
-      navDefault: true,
+      navDefault: true
     }),
     mounted() {
-      $nuxt.$on('changeLanguage', (changeLanguage) => {
-        if (changeLanguage === true) {
-          this.headerTitle = 'About me'
-          this.textAbout = mainTextENG
-          this.titleAbout = 'Anastasiya Glinka'
-          this.worksTitle = 'MY FAVOURITE WORKS'
-        } else {
-          this.headerTitle = 'Обо мне'
-          this.textAbout = mainTextRU
-          this.titleAbout = 'Анастасия Глинка'
-          this.worksTitle = 'МОИ ЛЮБИМЫЕ РАБОТЫ'
-        }
 
-      })
-
-      if(this.navOpen){
+      if (this.navOpen) {
         document.body.classList.add('no-scroll')
-      }
-      else {
+      } else {
         document.body.classList.remove('no-scroll')
       }
 
       $nuxt.$on('navOpen', (navOpen) => {
         navOpen ? (this.navOpen = true) : (this.navOpen = false)
         this.navDefault = false
+      })
+    },
+    computed: {
+      ...mapState('language', {
+        home: 'home',
+        about: 'about'
       })
     },
     methods: {
@@ -410,8 +395,8 @@
       }
 
       .text-bg h2 {
-      font-size: 3rem;
-    }
+        font-size: 3rem;
+      }
 
       .works {
         margin-top: 110%;
@@ -422,7 +407,7 @@
         margin-bottom: 0;
       }
 
-      .footer p{
+      .footer p {
         font-size: 0.7rem;
       }
     }

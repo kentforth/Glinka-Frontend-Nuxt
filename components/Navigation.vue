@@ -4,12 +4,12 @@
       <img src="~/assets/images/avatar.webp" alt=""/>
     </NuxtLink>
 
-    <h2>{{textAvatar}}</h2>
+    <h2>{{navigation.title}}</h2>
     <div class="nav-links">
-      <NuxtLink to="/" @click.native="closeNav">{{textHome}}</NuxtLink>
-      <NuxtLink to="/about" @click.native="closeNav">{{textAbout}}</NuxtLink>
-      <NuxtLink to="/portfolio" @click.native="closeNav">{{textPortfolio}}</NuxtLink>
-      <NuxtLink to="/contact" @click.native="closeNav">{{textContact}}</NuxtLink>
+      <NuxtLink to="/" @click.native="closeNav">{{navigation.home}}</NuxtLink>
+      <NuxtLink to="about" @click.native="closeNav">{{navigation.about}}</NuxtLink>
+      <NuxtLink to="portfolio" @click.native="closeNav">{{navigation.portfolio}}</NuxtLink>
+      <NuxtLink to="contact" @click.native="closeNav">{{navigation.contact}}</NuxtLink>
     </div>
 
     <a
@@ -25,7 +25,7 @@
         class="btn-lang"
         @click="changeLanguageToRU"
         v-bind:style="[
-          languageENG
+          isLanguageENG
             ? { color: 'var(--half-white)' }
             : { color: 'var(--white)' },
         ]"
@@ -38,7 +38,7 @@
         class="btn-lang"
         @click="changeLanguageToENG"
         v-bind:style="[
-          languageENG
+          isLanguageENG
             ? { color: 'var(--white)' }
             : { color: 'var(--half-white)' },
         ]"
@@ -62,20 +62,24 @@
 </template>
 
 <script>
+
+  import {mapState, mapActions} from 'vuex'
+
   export default {
     name: 'Navigation',
     data: () => ({
       isNavOpen: false,
       navClass: '',
       hamburgerClass: '',
-      languageENG: true,
-      textAvatar: 'Anastasiya Glinka',
-      textHome: 'Home',
-      textAbout: 'About',
-      textPortfolio: 'Portfolio',
-      textContact: 'Contact'
-    }),
+      isLanguageENG: true
+          }),
+    computed: {
+      ...mapState('language', {
+        navigation: 'navigation'
+      })
+    },
     methods: {
+      ...mapActions('language', ['CHANGE_LANGUAGE_TO_RU', 'CHANGE_LANGUAGE_TO_ENG']),
       openNav() {
         this.isNavOpen = !this.isNavOpen
 
@@ -99,17 +103,18 @@
           document.body.style.overflow = 'auto'
           $nuxt.$emit('navOpen', this.isNavOpen)
         }
+
       },
       handleResize() {
         this.isNavOpen = window.innerWidth > 900
       },
       changeLanguageToRU() {
-        this.languageENG = false
-        $nuxt.$emit('changeLanguage', this.languageENG)
+        this.isLanguageENG = false;
+        this.CHANGE_LANGUAGE_TO_RU();
       },
       changeLanguageToENG() {
-        this.languageENG = true
-        $nuxt.$emit('changeLanguage', this.languageENG)
+        this.isLanguageENG = true;
+        this.CHANGE_LANGUAGE_TO_ENG();
       }
     },
     mounted() {
@@ -119,21 +124,6 @@
         document.body.classList.remove('no-scroll')
       }
 
-      $nuxt.$on('changeLanguage', (changeLanguage) => {
-        if (changeLanguage === true) {
-          this.textAvatar = 'Anastasiya Glinka'
-          this.textHome = 'Home';
-          this.textAbout = 'About';
-          this.textPortfolio = 'Portfolio';
-          this.textContact = 'Contact';
-        } else {
-          this.textAvatar = 'Анастасия Глинка'
-          this.textHome = 'Домой';
-          this.textAbout = 'Обо мне';
-          this.textPortfolio = 'Портфоио';
-          this.textContact = 'Контакты';
-        }
-      })
     },
 
     created() {

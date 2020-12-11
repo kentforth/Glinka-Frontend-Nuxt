@@ -77,6 +77,8 @@ export default {
     proxy: true
   },
 
+
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     maxChunkSize: 300000,
